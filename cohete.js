@@ -20,7 +20,7 @@ let gameState = "start";  // Start, play, end
 let img;
 
 function preload() {
-  img = loadImage('https://los40mx00.epimg.net/los40/imagenes/2022/08/02/actualidad/1659470167_643695_1659470242_gigante_normal.jpg');
+  img = loadImage('https://raw.githubusercontent.com/GutiSoftware/AterrizajeLunar/main/PaisajeLunar.jpg');
 }
 
 function goFullScreen(){
@@ -29,20 +29,20 @@ function goFullScreen(){
 }
 
 function setup() {
-    createCanvas(windowWidth*0.9, windowHeight*0.9);  // Create the canvas with 90% of the window's width and height
+    createCanvas(windowWidth*0.95, windowHeight*0.8);  // Create the canvas with 90% of the window's width and height
     initGame();
 }
 
 function windowResized() {
-    resizeCanvas(windowWidth*0.9, windowHeight*0.9);  // Resize the canvas to 90% of the window's width and height when the window is resized
+    resizeCanvas(windowWidth*0.95, windowHeight*0.8);  // Resize the canvas to 90% of the window's width and height when the window is resized
     initGame();
 }
 
 function initGame() {
-    img.resize(windowWidth*0.9, windowHeight*0.9);  // Resize the image to match the canvas size
+    img.resize(windowWidth*0.95, windowHeight*0.8);  // Resize the image to match the canvas size
     position = createVector(width / 2, height / 12);
     velocity = createVector(0, 0);
-    let screenScale = Math.max(windowWidth / 612, windowHeight / 344);  // Calculate the screen scale
+    let screenScale = Math.max(windowWidth / 1680, windowHeight / 762);  // Calculate the screen scale
     fuel = FUEL_INITIAL //* screenScale;  // Adjust the initial fuel value based on the screen size
     //THRUST_MAIN *= screenScale;
     //THRUST_SECONDARY *= screenScale;
@@ -251,7 +251,7 @@ line(-20, 0, -22.5, 0); // 9 o'clock mark
 
 // Drawing the needle
 stroke(abs(velocity.x) > 2 ? 255 : 0, abs(velocity.x) <= 2 ? 255 : 0, 0);
-let angleX = map(velocity.x, 3, -3, PI, -PI);
+let angleX = map(velocity.x, -6, 6, -PI, PI);
 line(0, 0, 15 * cos(angleX - PI / 2), 15 * sin(angleX - PI / 2)); // We subtract PI/2 from the angle to make the needle start at 12 o'clock position
 
 
